@@ -46,6 +46,8 @@ class ProductsController extends Controller
     //REMOVE UM REGISTRO ESPECIFICO
     public function destroy($id)
     {
-
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }

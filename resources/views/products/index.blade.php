@@ -9,24 +9,24 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
   <header>
-     <nav>
+     <nav class="blue-grey">
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo"><i class="material-icons">filter_list</i></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">Javascript</a></li>
-          <li><a href="mobile.html">Mobile</a></li>
+          <li><a>Sass</a></li>
+          <li><a>Components</a></li>
+          <li><a>Javascript</a></li>
+          <li><a>Mobile</a></li>
         </ul>
       </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">Javascript</a></li>
-      <li><a href="mobile.html">Mobile</a></li>
+      <li><a>Sass</a></li>
+      <li><a>Components</a></li>
+      <li><a>Javascript</a></li>
+      <li><a>Mobile</a></li>
     </ul>
 </header>
 			
@@ -48,15 +48,19 @@
 							<td>{{ $product->id }}</td>
 							<td>{{ $product->title }}</td>
 							<td>
-								<a class="waves-effect waves-light btn green darken-4" href="{{  route('products.show', ['id'=>$product->id]) }}">View</a>
-								<a class="waves-effect waves-light btn blue darken-4" href="{{  route('products.edit', ['id'=>$product->id]) }}">Edit</a>
-								<a class="waves-effect waves-light btn red darken-4" href="{{  route('products.destroy', ['id'=>$product->id]) }}">Remove</a>
-
+								<a class="waves-effect waves-light btn blue-grey darken-4" href="{{  route('products.show', ['id'=>$product->id]) }}">View</a>
+								<a class="waves-effect waves-light btn blue-grey" href="{{  route('products.edit', ['id'=>$product->id]) }}">Edit</a>
+								<form action="{{ route('products.update', ['id'=>$product->id]) }}" method="POST" style="display:inline-block">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="_method" value="DELETE">
+									<button type="submit" class="btn waves-effect waves-light red darken-4">Remove</button>
+								</form>
 							</td>
 						</tr>
 					@endforeach
 					</tbody>
-				</table>
+				</table><br>
+				<a href="{{ route('products.create') }}" class="btn waves-light waves-effect blue-grey">Novo</a>
 		</div>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
