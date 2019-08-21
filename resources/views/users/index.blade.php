@@ -14,8 +14,8 @@
         <a href="#!" class="brand-logo"><i class="material-icons">filter_list</i></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="{{ route('products.create') }}">Novo</a></li>
-          <li><a>Components</a></li>
+          <li><a href="{{ route('users.create') }}">Novo</a></li>
+          <li><a href="{{ route('users.index') }}">Lista</a></li>
           <li><a>Javascript</a></li>
           <li><a>Mobile</a></li>
         </ul>
@@ -23,8 +23,8 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="{{ route('products.create') }}">Novo</a></li>
-      <li><a>Components</a></li>
+      <li><a href="{{ route('users.create') }}">Novo</a></li>
+      <li><a href="{{ route('users.index') }}">Lista</a></li>
       <li><a>Javascript</a></li>
       <li><a>Mobile</a></li>
     </ul>
@@ -38,19 +38,21 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>TITULO</th>
+							<th>NOME</th>
+							<th>E-MAIL</th>
 							<th>AÇÕES</th>
 						</tr>
 					</thead>
 					<tbody>
-					@foreach ($data as $key => $product)
+					@foreach ($data as $key => $user)
 						<tr>
-							<td>{{ $product->id }}</td>
-							<td>{{ $product->title }}</td>
+							<td>{{ $user->id }}</td>
+							<td>{{ $user->name }}</td>
+							<td>{{ $user->email }}</td>
 							<td>
-								<a class="waves-effect waves-light btn blue-grey darken-4" href="{{  route('products.show', ['id'=>$product->id]) }}">View</a>
-								<a class="waves-effect waves-light btn blue-grey" href="{{  route('products.edit', ['id'=>$product->id]) }}">Edit</a>
-								<form action="{{ route('products.update', ['id'=>$product->id]) }}" method="POST" style="display:inline-block">
+								<a class="waves-effect waves-light btn blue-grey darken-4" href="{{  route('users.show', ['id'=>$user->id]) }}">View</a>
+								<a class="waves-effect waves-light btn blue-grey" href="{{  route('users.edit', ['id'=>$user->id]) }}">Edit</a>
+								<form action="{{ route('users.update', ['id'=>$user->id]) }}" method="POST" style="display:inline-block">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<input type="hidden" name="_method" value="DELETE">
 									<button type="submit" class="btn waves-effect waves-light red darken-4">Remove</button>
@@ -60,7 +62,7 @@
 					@endforeach
 					</tbody>
 				</table><br>
-				<a href="{{ route('products.create') }}" class="btn waves-light waves-effect blue-grey">Novo</a>
+				<a href="{{ route('users.create') }}" class="btn waves-light waves-effect blue-grey">Novo</a>
 		</div>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
