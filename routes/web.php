@@ -16,6 +16,8 @@ Route::match(['get', 'post'], '/hello/{name?}', function ($name = "World") {
     return 'Hello '.$name.'!';
 });
 
+Route::resource('users', 'UsersController');
+
 Route::resource('products', 'ProductsController');
 /*COMO ISSO TEMOS AS SETE ROTAS QUE TEMOS AS FUNCOES NA CONTROLLER
 GET /products - index - products.index
